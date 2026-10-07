@@ -11,7 +11,7 @@
     {
       "name": "truename",
       "source": "./",
-      "version": "0.0.1",
+      "version": "0.0.2",
       "description": "Finds the right name for an artificial entity (company, repo, plugin, variable, skill trigger) by deliberately indirect, multi-lens generation, then scores and availability-checks the finalists."
     }
   ]
