@@ -15,15 +15,18 @@ the first one did?
 Rebuild truename around a forge.
 
 **`/forge-a-name` is a launcher skill and the only part that talks to the hero.** It asks the opening
-questions (what's being named, the ore blend, the wild / boring / plain spread, how many smiths), shows
-the forged blades, takes steering, and resumes the work.
+questions (what's being named, the ore blend, the wild / boring / plain spread), shows the forged
+blades, takes steering, and resumes the work.
 
 **A new `forgemaster` agent sits behind it as coordinator.** It hides its helpers' intermediate steps,
-unless one turns up **THE ONE TRUE BLADE**, which skips straight to the end. It brings in as many
-`name-smelter`s as the quest's breadth calls for: one ore for a Frodo's Needle hunt, several lands for a
-broad quest. The number of smelters and the number of ores are unrelated. It hands their worked iron to
-N smiths, with N set by the hero. On request it takes a family heirloom straight to a smith. It also
-recombines failed output with new raw material, or sends it back for a hardening pass.
+unless a smith reveals **THE ONE TRUE BLADE**, which skips straight to the end. THE ONE TRUE BLADE is a
+blade scoring 5 on every axis except at most one 4: not true perfection, but a higher signal than the
+rest. The forgemaster brings in as many `name-smelter`s as the quest's breadth calls for: one ore for a
+Frodo's Needle hunt, several lands for a broad quest. The number of smelters and the number of ores are
+unrelated. It hands their worked iron to the smiths. The hero does not set the number of smiths: a run
+starts with one smith per smelter and adds one more smith each round. On request the forgemaster takes a
+family heirloom straight to a smith. It also recombines failed output with new raw material, or sends it
+back for a hardening pass.
 
 **Two libraries make the dials concrete.**
 
@@ -37,9 +40,11 @@ recombines failed output with new raw material, or sends it back for a hardening
 
 **Each smith forges and tempers one candidate.** It works out variants, then checks availability, the
 story, the scores, and **domain viability, including domain hacks**: forms where a real top-level domain
-completes the word, as in `bit.ly` or `del.icio.us`. It returns the best form plus alternates, or a
-broken blade with its usable parts marked for the forge to melt down. GitHub drops from main knockout to
-minor signal, and the smiths decide which checks matter based on the blade type.
+completes the word, as in `bit.ly` or `del.icio.us`. Whether a domain hack is a check, an archetype, or
+both does not matter outside the smith: the smith manages that end to end and may iterate on it. It
+returns the best form plus alternates, or a broken blade with its usable parts marked for the forge to
+melt down. GitHub drops from main knockout to minor signal, and the smiths decide which checks matter
+based on the blade type, meaning its archetype in cc-toolkit's sense (coined, compound, descriptive, …).
 
 **A separate hardening skill consolidates the forge's memory.** The scrap heap and favorites are stored
 per project in `.truename/`, and the hero's ore and archetype tastes globally in `~/.claude/truename/`.
@@ -56,9 +61,9 @@ per project in `.truename/`, and the hero's ore and archetype tastes globally in
   included. For .com, a 404 means unregistered. Domain-hack TLDs (country codes such as .ly or .us) are
   run by many different registries, and some publish no RDAP service. *Test:* one known-taken domain, one
   nonsense domain, and one domain-hack TLD.
-- [ ] **A round costs no more than a 0.0.2 round.** Demoting GitHub helps twice: it removes the knockout
-  Jared didn't want *and* the search rate limit behind run 1's long stall. *Test:* compare round 1's time
-  and tool-call count against 0.0.2.
+- [ ] **A first round costs no more than a 0.0.2 round.** Demoting GitHub helps twice: it removes the
+  knockout Jared didn't want *and* the search rate limit behind run 1's long stall. Later rounds cost more
+  by design, since each adds a smith. *Test:* compare round 1's time and tool-call count against 0.0.2.
 - [ ] **Hiding intermediate steps won't make a bad run impossible to diagnose.** *(Claude's suggestion: a
   forge log on disk that the hero only sees on request.)*
 
@@ -69,7 +74,7 @@ per project in `.truename/`, and the hero's ore and archetype tastes globally in
    the smith with no nesting at all.
 2. **One smelter.** Add `name-smelter` with a single ore written into the agent itself, with no library
    files yet.
-3. **The forgemaster.** Add it, starting the smelter and N smiths, with the hero steering through the
+3. **The forgemaster.** Add it, starting the smelter and its smiths, with the hero steering through the
    launcher, plus THE ONE TRUE BLADE early exit. This step is the sibling-spawn test.
 
 ## Not Doing (yet), and Why
@@ -83,19 +88,24 @@ per project in `.truename/`, and the hero's ore and archetype tastes globally in
   quest is.
 - **Trademark searches, voting by several people, non-English markets.** Set aside during refinement.
 
+## Before a True Release
+
+- **Agent names are inconsistently hyphenated** (`namesmith`, `name-smelter`, `forgemaster`). Leave them
+  for now; settle one convention before release. `namesmith` is also used by two other naming tools,
+  and one of them is installed on this machine. `forgemaster` and `name-smelter` haven't been checked
+  for collisions.
+
 ## Open Questions
 
-- **What does "blade type" mean** in "smiths decide which checks matter based on the blade type"? It
-  could mean the archetype: coined names need exact-match domain checks, descriptive ones less so. Or it
-  could mean the kind of thing being named (repo, company, variable), which 0.0.2 already uses to decide
-  where conflicts live. The two lead to different file layouts.
-- **Is a domain hack a check or an archetype?** It can be a check every smith runs on every candidate,
-  or an archetype of its own that the forgemaster assigns, or both.
-- **Agent names.** `namesmith` is used by two other naming tools, and one of them is installed on this
-  machine. The design says "name-smith". `forgemaster` and `name-smelter` haven't been checked for
-  collisions.
 - **How does the forgemaster judge a quest's breadth?** The hero states it at launch, or it's inferred
   from the brief and the hero can override?
-- **What's the bar for THE ONE TRUE BLADE?** 5 on every axis, plus an available domain, plus no notable
-  collision? The smith scores, so does the forgemaster decide when to cut to the end?
 - **Is a forge log on disk acceptable,** given that the forgemaster doesn't reveal intermediate steps?
+
+## Settled on 2026-10-07
+
+- **Smith count**: one per smelter in the first round, one more each round after. The hero doesn't set
+  it.
+- **THE ONE TRUE BLADE**: 5 on every axis except at most one 4. The smith reveals it; the forgemaster
+  skips to the end.
+- **"Blade type"** means the archetype, in cc-toolkit's sense.
+- **Domain hack as check or archetype**: the smith's call, end to end.
