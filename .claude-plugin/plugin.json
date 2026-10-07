@@ -1,0 +1,17 @@
+{
+  "name": "truename",
+  "version": "0.0.1",
+  "description": "Finds the right name for an artificial entity (company, repo, plugin, variable, skill trigger) by deliberately indirect, multi-lens generation, then scores and availability-checks the finalists.",
+  "author": {
+    "name": "Jared Parmenter",
+    "email": "jared.parmenter@gmail.com"
+  },
+  "keywords": [
+    "naming",
+    "brainstorming",
+    "branding",
+    "ideation",
+    "availability"
+  ],
+  "license": "MIT"
+}
