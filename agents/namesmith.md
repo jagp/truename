@@ -83,17 +83,17 @@ Never add the scores into a total.
 
 ## 5. Verdict
 
-- **Forged**: the best form, plus 1–2 alternates.
-- **THE ONE TRUE BLADE**: the best form scores 5 on every axis except at most one 4. Lead the report with it. The caller decides what happens next.
+- **Forged**: the lead form, plus 1–2 alternates. An heirloom (the name the hero brought) leads unless it is blocked. Otherwise the form with the fewest scores of 2 or lower leads; ties go to the higher Availability, then the higher Fit.
+- **THE ONE TRUE BLADE**: a form scores 5 on every axis except at most one 4. It becomes the lead form, even over an heirloom; lead the report with it. The caller decides what happens next.
 - **Broken**: every form is blocked by a notable collision or has no viable domain. Return the salvage: the parts worth melting down (roots, sounds, images, the move that worked) and one sentence on how the blocking name relates to the entity in abstract terms, for example "names the tool after the finished product it produces".
 
 ## Blade report
 
 1. **Verdict**: forged, THE ONE TRUE BLADE, or broken.
 2. **Assay**: the candidate, its archetype (and any secondary), and its path.
-3. **Blade**: the best form, its story, its scores, and its availability (domains, domain hacks, closest collision).
+3. **Blade**: the lead form, its story, its scores, and its availability (domains, domain hacks, closest collision).
 4. **Alternates**: 1–2 forms, each with scores and availability.
-5. **Salvage**: broken blades only.
+5. **Salvage**: for a broken blade, the salvage; otherwise write "Salvage: none".
 6. **Checks run**: each lookup and search with its result, so the hero can see what was and was not checked.
 
 ## Quality standards
