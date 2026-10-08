@@ -1,7 +1,7 @@
 {
   "name": "truename",
   "version": "0.0.2",
-  "description": "Finds the right name for an artificial entity (company, repo, plugin, variable, skill trigger) by deliberately indirect, multi-lens generation, then scores and availability-checks the finalists.",
+  "description": "Names artificial things (companies, repos, plugins, handles) by forging candidates: a smith works one name into variants, checks its domains (including domain hacks) and collisions, and scores it.",
   "author": {
     "name": "Jared Parmenter",
     "email": "jared.parmenter@gmail.com"
