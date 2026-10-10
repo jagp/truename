@@ -14,12 +14,18 @@ the first one did?
 
 Rebuild truename around a forge.
 
-**`/forge-a-name` is a launcher skill and the only part that talks to the hero.** It asks the opening
-questions (what's being named, the ore blend, the wild / boring / plain spread), shows the forged
-blades, takes steering, and resumes the work.
+**`/forge-a-name` is a skill launched by a hero (the user) that summons a single forgemaster agent, the coordinator of the forge's internal resources and subagents.  The hero presents with a particular quest: he charges the forgemaster with a goal of discovering the true name of a nameless entity (an object, force, creature, companion) close to the hero.  The forgemaster must ply his wisdom and insight to supply his craftsmen with the correct raw materials and techniques to discover the entity's "true name" through the magic of the mystical forge.  The forgemaster alone inrterfaces with the hero, hiding the forging process.  
 
-**A new `forgemaster` agent sits behind it as coordinator.** It hides its helpers' intermediate steps,
-unless a smith reveals **THE ONE TRUE BLADE**, which skips straight to the end. THE ONE TRUE BLADE is a
+The process creates a new forged weapon, each bearing a unique name on the blade.  It is this name the heroes are in search of, and it is the hero's job to select a correct blade, according to his heart.  The name is unique to each sword, and is determined by a magical process that has 4 components, each contributing a partricular quality to the name:
+ore - the mineral represents the lexical 
+
+
+
+Note that a name neednt by a single word -- sometimes the right name has multiple parts.
+
+If the quest is well defined, he may need no additional information; however, he may ask the hero any number of questions to aid in the selection of metal ores, and the shape of the forged blade.  Each type opf ore confers different properties to the smelted ingots used production of the mystical item.  Stasndard iron ores smelt into standard metal; exotic, ancient, dull, shiny ores confer different qualities into the metal they liquify into.  
+
+**A new `forgemaster` agent sits behind it as coordinator.**  **THE ONE TRUE BLADE**, which skips straight to the end. THE ONE TRUE BLADE is a
 blade scoring 5 on every axis except at most one 4: not true perfection, but a higher signal than the
 rest. The forgemaster brings in as many `name-smelter`s as the quest's breadth calls for: one ore for a
 Frodo's Needle hunt, several lands for a broad quest. The number of smelters and the number of ores are
